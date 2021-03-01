@@ -5,7 +5,7 @@
   "repository": {},
   "main": "index.js",
   "scripts": {
-    "preinstall": "npm install pm2 -g",
+    "preinstall": "sudo npm install pm2 -g",
     "start": "pm2 start index.js --name tcp-reverse-proxy -- 8443 192.168.49.2 8443",
     "dev": "node index.js 8443 192.168.49.2 8443"
   },
