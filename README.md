@@ -1,4 +1,4 @@
-# Localhost TCP Reverse Proxy Server
+# TCP Reverse Proxy
 Proxies TCP traffic from a port on your machine to another host & port that your machine is able to reach
 
 ## Setup
