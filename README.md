@@ -21,3 +21,6 @@ npm start
 
 ## Credits
 https://gist.github.com/kfox/2313683
+
+## License
+MIT
