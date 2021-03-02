@@ -3,6 +3,12 @@ Proxies TCP traffic from a port on your machine to another host & port that your
 
 ## Setup
 
+Ensure that you have PM2 installed:
+```bash
+sudo npm install pm2 -g
+```
+
+Install rest of npm packages for this project:
 ```bash
 npm install
 ```
