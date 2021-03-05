@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "pm2 start index.js --name tcp-reverse-proxy -- 8443 192.168.49.2 8443",
-    "local": "pm2 start index.js --name tcp-reverse-proxy -- 8443 10.0.0.136 8443"
+    "local": "pm2 start index.js --name tcp-reverse-proxy-minikube -- 8443 10.0.0.136 8443"
   },
   "author": "",
   "license": "ISC",
