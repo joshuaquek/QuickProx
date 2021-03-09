@@ -5,8 +5,10 @@
   "repository": {},
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js --name tcp-reverse-proxy -- 8443 192.168.49.2 8443",
-    "local": "pm2 start index.js --name tcp-reverse-proxy-minikube -- 8443 10.0.0.136 8443"
+    "proxy": "node -e \"process.stdout.write(require('child_process').execSync( 'pm2 start index.js -f --name tcp-proxy-localhost-' + (process.argv[1] || '0000') + '-to-' + (process.argv[2] || '0000') + '-' + (process.argv[3] || '0000') + ' -- ' + (process.argv[1] || '0000') + ' ' + (process.argv[2] || '0000') + ' ' + (process.argv[3] || '0000') ))\"",
+    "delete": "node -e \"process.stdout.write(require('child_process').execSync( 'pm2 delete '+(process.argv[1] || 'empty-proxy') ))\"",
+    "list": "pm2 ls",
+    "status": "pm2 monit"
   },
   "author": "",
   "license": "ISC",
@@ -14,3 +16,4 @@
     "net": "^1.0.2"
   }
 }
+
