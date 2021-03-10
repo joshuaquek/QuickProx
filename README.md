@@ -53,7 +53,7 @@ Lets say you want requests that reach `localhost:3000` to be routed to `10.0.0.1
 quickprox add 3000 10.0.0.136 8080
 ```
 
-![image.png](.media/img_4.png)
+![image.png](https://github.com/joshuaquek/tcp-reverse-proxy/blob/master/.media/img_4.png)
 
 ## Viewing List of TCP Proxies
 
@@ -64,7 +64,7 @@ quickprox list
 ```
 
 Take note of the `id` column, that is the value you can use later when wanting to delete TCP proxies:
-![image.png](.media/img_5.png)
+![image.png](https://github.com/joshuaquek/tcp-reverse-proxy/blob/master/.media/img_5.png)
 
 ## Deleting a TCP Proxy
 
@@ -80,7 +80,7 @@ For example, if I want to delete a proxy with id equal to 1, the I would run:
 quickprox delete 1
 ```
 
-![image.png](.media/img_6.png)
+![image.png](https://github.com/joshuaquek/tcp-reverse-proxy/blob/master/.media/img_6.png)
 
 ## Viewing Logs of TCP Proxies
 
@@ -90,7 +90,7 @@ To see the logs of each proxy, you can run:
 quickprox status
 ```
 
-![image.png](.media/img_7.png)
+![image.png](https://github.com/joshuaquek/tcp-reverse-proxy/blob/master/.media/img_7.png)
 As mentioned previously, this uses PM2, and you can then see each running proxy by using the arrow keys (up/down)
 
 ## Credits
