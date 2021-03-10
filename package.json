@@ -1,6 +1,6 @@
 {
   "name": "quickprox",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Proxies TCP traffic from a port on your machine to another host & port that your machine is able to reach",
   "repository": {},
   "main": "index.js",

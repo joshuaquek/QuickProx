@@ -105,6 +105,40 @@ quickprox status
 ![image.png](https://github.com/joshuaquek/tcp-reverse-proxy/blob/master/.media/img_7.png)
 As mentioned previously, this uses PM2, and you can then see each running proxy by using the arrow keys (up/down)
 
+## Aliases
+
+Here are a list of aliases that you can use that literally do the same thing, for flexibility's sake 🤝 :
+```bash
+# Creating a tcp proxy
+quickprox add 8085 10.0.0.136 3003
+quickprox create 8085 10.0.0.136 3003
+quickprox new 8085 10.0.0.136 3003
+quickprox serve 8085 10.0.0.136 3003
+quickprox deploy 8085 10.0.0.136 3003
+
+# Deleting a tcp proxy
+quickprox delete 3
+quickprox remove 3
+quickprox kill 3
+
+# Deleting all tcp proxies created
+quickprox delete all
+quickprox remove all
+quickprox kill all
+
+# Listing all tcp proxies
+quickprox list
+quickprox ls
+quickprox ps
+quickprox l
+
+# Status of tcp proxies
+quickprox status
+quickprox monit
+quickprox details
+
+```
+
 ## Credits
 
 Some code that was used in building this:
