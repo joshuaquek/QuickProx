@@ -2,6 +2,7 @@
 
 const util = require('util')
 const execSync = util.promisify(require('child_process').execSync)
+const serverRoot = require('path').resolve(`${__dirname}`)
 
 const userOption = process.argv[2] || null // assign null to re-reoute to Help section
 
@@ -13,7 +14,7 @@ async function run (command) {
 
 switch (userOption) {
   case 'add':
-    run('pm2 start ./main/index.js -f --name tcp-proxy-localhost-' + (process.argv[3] || '0000') + '-to-' + (process.argv[4] || '0000') + '-' + (process.argv[5] || '0000') + ' -- ' + (process.argv[3] || '0000') + ' ' + (process.argv[4] || '0000') + ' ' + (process.argv[5] || '0000'))
+    run('pm2 start ' + serverRoot + '/main/index.js -f --name tcp-proxy-localhost-' + (process.argv[3] || '0000') + '-to-' + (process.argv[4] || '0000') + '-' + (process.argv[5] || '0000') + ' -- ' + (process.argv[3] || '0000') + ' ' + (process.argv[4] || '0000') + ' ' + (process.argv[5] || '0000'))
     break
   case 'delete':
     run('pm2 delete ' + (process.argv[3] || 'empty-proxy'))
