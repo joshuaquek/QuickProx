@@ -84,6 +84,14 @@ quickprox delete 1
 
 ![image.png](https://github.com/joshuaquek/tcp-reverse-proxy/blob/master/.media/img_6.png)
 
+## Deleting all TCP Proxies created
+
+``` bash
+quickprox delete all
+```
+
+![image.png](.media/img_8.png)
+
 ## Viewing Logs of TCP Proxies
 
 To see the logs of each proxy, you can run:
@@ -96,6 +104,7 @@ quickprox status
 As mentioned previously, this uses PM2, and you can then see each running proxy by using the arrow keys (up/down)
 
 ## Credits
+
 Some code that was used in building this:
 [https://gist.github.com/kfox/2313683](https://gist.github.com/kfox/2313683)
 

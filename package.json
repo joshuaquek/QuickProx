@@ -1,12 +1,12 @@
 {
   "name": "quickprox",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Proxies TCP traffic from a port on your machine to another host & port that your machine is able to reach",
   "repository": {},
   "main": "index.js",
   "bin": "./index.js",
   "scripts": {
-    "proxy": "node -e \"process.stdout.write(require('child_process').execSync( 'pm2 start ./main/index.js -f --name tcp-proxy-localhost-' + (process.argv[1] || '0000') + '-to-' + (process.argv[2] || '0000') + '-' + (process.argv[3] || '0000') + ' -- ' + (process.argv[1] || '0000') + ' ' + (process.argv[2] || '0000') + ' ' + (process.argv[3] || '0000') ))\"",
+    "proxy": "node -e \"process.stdout.write(require('child_process').execSync( 'pm2 start ./main/index.js -f --namespace quickprox --name tcp-proxy-localhost-' + (process.argv[1] || '0000') + '-to-' + (process.argv[2] || '0000') + '-' + (process.argv[3] || '0000') + ' -- ' + (process.argv[1] || '0000') + ' ' + (process.argv[2] || '0000') + ' ' + (process.argv[3] || '0000') ))\"",
     "delete": "node -e \"process.stdout.write(require('child_process').execSync( 'pm2 delete '+(process.argv[1] || 'empty-proxy') ))\"",
     "list": "pm2 ls",
     "status": "pm2 monit",

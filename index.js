@@ -14,10 +14,14 @@ async function run (command) {
 
 switch (userOption) {
   case 'add':
-    run('pm2 start ' + serverRoot + '/main/index.js -f --name tcp-proxy-localhost-' + (process.argv[3] || '0000') + '-to-' + (process.argv[4] || '0000') + '-' + (process.argv[5] || '0000') + ' -- ' + (process.argv[3] || '0000') + ' ' + (process.argv[4] || '0000') + ' ' + (process.argv[5] || '0000'))
+    run('pm2 start ' + serverRoot + '/main/index.js -f --namespace quickprox --name tcp-proxy-localhost-' + (process.argv[3] || '0000') + '-to-' + (process.argv[4] || '0000') + '-' + (process.argv[5] || '0000') + ' -- ' + (process.argv[3] || '0000') + ' ' + (process.argv[4] || '0000') + ' ' + (process.argv[5] || '0000'))
     break
   case 'delete':
-    run('pm2 delete ' + (process.argv[3] || 'empty-proxy'))
+    if (process.argv[3] === 'all') {
+      run('pm2 delete quickprox')
+    } else {
+      run('pm2 delete ' + (process.argv[3] || 'empty-proxy'))
+    }
     break
   case 'list':
     run('pm2 list')
@@ -31,6 +35,7 @@ switch (userOption) {
       'quickprox add 8080 10.0.0.136 3000\t<-- Adds a new TCP Proxy\n\n' +
       'quickprox list\t\t\t<-- Lists TCP Proxies created\n\n' +
       'quickprox delete 1\t\t\t<-- Deletes a TCP Proxy based on its id\n\n' +
+      'quickprox delete all\t\t\t<-- Deletes all TCP Proxies created\n\n' +
       'quickprox status\t\t\t<-- Deletes a TCP Proxy based on its id\n\n' +
       'For full usage documentation, please visit ' +
       '----------------------------------------'
