@@ -90,7 +90,7 @@ quickprox delete 1
 quickprox delete all
 ```
 
-![image.png](.media/img_8.png)
+![image.png](https://github.com/joshuaquek/tcp-reverse-proxy/blob/master/.media/img_8.png)
 
 ## Viewing Logs of TCP Proxies
 
