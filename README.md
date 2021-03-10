@@ -1,4 +1,4 @@
-![image.png](.media/img_9.png)
+![image.png](https://github.com/joshuaquek/tcp-reverse-proxy/blob/master/.media/img_9.png)
 
 # QuickProx
 
