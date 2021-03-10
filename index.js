@@ -14,9 +14,18 @@ async function run (command) {
 
 switch (userOption) {
   case 'add':
+  case 'create': // alternate alias
+  case 'new': // alternate alias
+  case 'serve': // alternate alias
+  case 'link': // alternate alias
+  case 'set': // alternate alias
+  case 'deploy': // alternate alias
     run('pm2 start ' + serverRoot + '/main/index.js -f --namespace quickprox --name tcp-proxy-localhost-' + (process.argv[3] || '0000') + '-to-' + (process.argv[4] || '0000') + '-' + (process.argv[5] || '0000') + ' -- ' + (process.argv[3] || '0000') + ' ' + (process.argv[4] || '0000') + ' ' + (process.argv[5] || '0000'))
     break
   case 'delete':
+  case 'remove': // alternate alias
+  case 'kill': // alternate alias
+  case 'unset': // alternate alias
     if (process.argv[3] === 'all') {
       run('pm2 delete quickprox')
     } else {
@@ -24,9 +33,13 @@ switch (userOption) {
     }
     break
   case 'list':
+  case 'ls': // alternate alias
+  case 'ps': // alternate alias
+  case 'l': // alternate alias
     run('pm2 list')
     break
   case 'status':
+  case 'monit': // alternate alias
     run('pm2 monit')
     break
   default: // Shows Help section
