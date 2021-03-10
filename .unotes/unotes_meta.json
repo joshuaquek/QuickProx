@@ -1,7 +1,14 @@
 {
   "name": "",
   "isOrdered": true,
-  "folders": {},
+  "folders": {
+    "main": {
+      "name": "main",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
+    }
+  },
   "files": {
     "README": 0,
     "LICENSE": 1

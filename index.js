@@ -1,89 +1,38 @@
-var net = require("net");
+#!/usr/bin/env node
 
-process.on("uncaughtException", function(error) {
-  console.error(error);
-});
+const util = require('util')
+const execSync = util.promisify(require('child_process').execSync)
 
-if (process.argv.length != 5) {
-  console.log("usage: %s <localport> <remotehost> <remoteport>", process.argv[1]);
-  process.exit();
+const userOption = process.argv[2] || null // assign null to re-reoute to Help section
+
+async function run (command) {
+  const { stdout, stderr } = await execSync(command, { stdio: 'inherit' })
+  if (stdout) console.log(stdout)
+  if (stderr) console.error(stderr)
 }
 
-var localport = process.argv[2];
-var remotehost = process.argv[3];
-var remoteport = process.argv[4];
-
-var server = net.createServer(function (localsocket) {
-  var remotesocket = new net.Socket();
-
-  remotesocket.connect(remoteport, remotehost);
-
-  localsocket.on('connect', function (data) {
-    console.log(">>> connection #%d from %s:%d",
-      server.connections,
-      localsocket.remoteAddress,
-      localsocket.remotePort
-    );
-  });
-
-  localsocket.on('data', function (data) {
-    console.log("%s:%d - writing data to remote",
-      localsocket.remoteAddress,
-      localsocket.remotePort
-    );
-    var flushed = remotesocket.write(data);
-    if (!flushed) {
-      console.log("  remote not flushed; pausing local");
-      localsocket.pause();
-    }
-  });
-
-  remotesocket.on('data', function(data) {
-    console.log("%s:%d - writing data to local",
-      localsocket.remoteAddress,
-      localsocket.remotePort
-    );
-    var flushed = localsocket.write(data);
-    if (!flushed) {
-      console.log("  local not flushed; pausing remote");
-      remotesocket.pause();
-    }
-  });
-
-  localsocket.on('drain', function() {
-    console.log("%s:%d - resuming remote",
-      localsocket.remoteAddress,
-      localsocket.remotePort
-    );
-    remotesocket.resume();
-  });
-
-  remotesocket.on('drain', function() {
-    console.log("%s:%d - resuming local",
-      localsocket.remoteAddress,
-      localsocket.remotePort
-    );
-    localsocket.resume();
-  });
-
-  localsocket.on('close', function(had_error) {
-    console.log("%s:%d - closing remote",
-      localsocket.remoteAddress,
-      localsocket.remotePort
-    );
-    remotesocket.end();
-  });
-
-  remotesocket.on('close', function(had_error) {
-    console.log("%s:%d - closing local",
-      localsocket.remoteAddress,
-      localsocket.remotePort
-    );
-    localsocket.end();
-  });
-
-});
-
-server.listen(localport);
-
-console.log("Redirecting connections from 127.0.0.1:%d to %s:%d", localport, remotehost, remoteport);
+switch (userOption) {
+  case 'add':
+    run('pm2 start ./main/index.js -f --name tcp-proxy-localhost-' + (process.argv[3] || '0000') + '-to-' + (process.argv[4] || '0000') + '-' + (process.argv[5] || '0000') + ' -- ' + (process.argv[3] || '0000') + ' ' + (process.argv[4] || '0000') + ' ' + (process.argv[5] || '0000'))
+    break
+  case 'delete':
+    run('pm2 delete ' + (process.argv[3] || 'empty-proxy'))
+    break
+  case 'list':
+    run('pm2 list')
+    break
+  case 'status':
+    run('pm2 monit')
+    break
+  default: // Shows Help section
+    console.log(
+      '\n ----- Commands available: -----\n\n' +
+      'quickprox add 8080 10.0.0.136 3000\t<-- Adds a new TCP Proxy\n\n' +
+      'quickprox list\t\t\t<-- Lists TCP Proxies created\n\n' +
+      'quickprox delete 1\t\t\t<-- Deletes a TCP Proxy based on its id\n\n' +
+      'quickprox status\t\t\t<-- Deletes a TCP Proxy based on its id\n\n' +
+      'For full usage documentation, please visit ' +
+      '----------------------------------------'
+    )
+    break
+}

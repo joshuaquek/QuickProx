@@ -1,8 +1,35 @@
-# TCP Reverse Proxy
+# QuickProx
+
+A simple TCP Reverse Proxy, installable globally on your machine via NPM
 
 Proxies TCP traffic from a port on your machine to another host & port that your machine is able to reach
 
-Underneath the hood, it uses the following npm packages - `net` & `pm2`
+## Quick Start
+
+Run the following in your command-line/terminal:
+
+``` bash
+sudo npm install -g pm2
+npm install -g quickprox
+```
+
+Add a new proxy:
+
+``` bash
+quickprox add 3000 10.0.0.136 8080
+```
+
+This routes tcp requests that reach `localhost:3000` to be routed to `10.0.0.136:8080`
+
+You can continue adding more proxies:
+
+``` bash
+quickprox add 5432 10.0.1.100 5322
+quickprox add 8080 10.0.1.100 3001
+quickprox add 3030 10.0.1.100 4002
+```
+
+For more details on how to list out proxies, delete proxies, check the status of proxies, continue reading the following sections.
 
 ## Setup
 
@@ -12,10 +39,10 @@ Ensure that you have PM2 installed, else the tool wont work:
 sudo npm install pm2 -g
 ```
 
-Install rest of npm packages for this project:
+Next, install `quickprox`:
 
 ``` bash
-npm install
+npm install -g quickprox
 ```
 
 ## Adding a TCP Proxy
@@ -23,52 +50,53 @@ npm install
 Lets say you want requests that reach `localhost:3000` to be routed to `10.0.0.136:8080`:
 
 ``` bash
-npm run proxy 3000 10.0.0.136 8080
+quickprox add 3000 10.0.0.136 8080
 ```
 
-![image.png](.media/img_1.png)
+![image.png](.media/img_4.png)
 
 ## Viewing List of TCP Proxies
 
 To see a list of all TCP proxies that you have created:
 
 ``` bash
-npm run list
+quickprox list
 ```
 
-Take note of the `id` column, that is the value you can use later when wanting to delete TCP proxies
-![image.png](.media/img_2.png)
+Take note of the `id` column, that is the value you can use later when wanting to delete TCP proxies:
+![image.png](.media/img_5.png)
 
 ## Deleting a TCP Proxy
 
-Using the `id` value from `npm run list`, you can then run
+Using the `id` value from `quickprox list`, you can then run
 
 ``` bash
-npm run delete id_here
+quickprox delete id_here
 ```
 
 For example, if I want to delete a proxy with id equal to 1, the I would run:
 
 ``` bash
-npm run delete 1
+quickprox delete 1
 ```
 
-![image.png](.media/img_3.png)
+![image.png](.media/img_6.png)
 
 ## Viewing Logs of TCP Proxies
 
 To see the logs of each proxy, you can run:
 
 ``` bash
-npm run status
+quickprox status
 ```
 
-![image.png](.media/img_4.png)
+![image.png](.media/img_7.png)
 As mentioned previously, this uses PM2, and you can then see each running proxy by using the arrow keys (up/down)
 
 ## Credits
 
-[https://gist.github.com/kfox/2313683](https://gist.github.com/kfox/2313683)
+Underneath the hood, it uses the following npm packages - `net` & `pm2`
+Also, it uses code found here: [https://gist.github.com/kfox/2313683](https://gist.github.com/kfox/2313683)
 
 ## License
 
