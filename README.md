@@ -4,6 +4,8 @@ A simple TCP Reverse Proxy, installable globally on your machine via NPM
 
 Proxies TCP traffic from a port on your machine to another host & port that your machine is able to reach
 
+Underneath the hood, it uses the following npm packages - `net` & `pm2`
+
 ## Quick Start
 
 Run the following in your command-line/terminal:
@@ -94,9 +96,8 @@ quickprox status
 As mentioned previously, this uses PM2, and you can then see each running proxy by using the arrow keys (up/down)
 
 ## Credits
-
-Underneath the hood, it uses the following npm packages - `net` & `pm2`
-Also, it uses code found here: [https://gist.github.com/kfox/2313683](https://gist.github.com/kfox/2313683)
+Some code that was used in building this:
+[https://gist.github.com/kfox/2313683](https://gist.github.com/kfox/2313683)
 
 ## License
 
