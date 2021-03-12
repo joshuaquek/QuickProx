@@ -1,8 +1,8 @@
 {
   "name": "quickprox",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Proxies TCP traffic from a port on your machine to another host & port that your machine is able to reach",
-  "repository": {},
+  "repository": "https://github.com/joshuaquek/QuickProx",
   "main": "index.js",
   "bin": "./index.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "--------": "---------------------",
     "release": "npm publish --verbose --access=public"
   },
-  "author": "",
+  "author": "Joshua Quek",
   "license": "MIT",
   "dependencies": {
     "net": "^1.0.2"
