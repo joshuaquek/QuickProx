@@ -23,7 +23,7 @@ Add a new proxy:
 quickprox add 3000 10.0.0.136 8080
 ```
 
-This routes tcp requests that reach `localhost:3000` to be routed to `10.0.0.136:8080`
+This routes tcp requests that reach `0.0.0.0:3000` (also `localhost:3000`) to be routed to `10.0.0.136:8080`
 
 You can continue adding more proxies:
 
@@ -51,7 +51,7 @@ npm install -g quickprox
 
 ## Adding a TCP Proxy
 
-Lets say you want requests that reach `localhost:3000` to be routed to `10.0.0.136:8080`:
+Lets say you want requests that reach `0.0.0.0:3000` (also `localhost:3000`) to be routed to `10.0.0.136:8080`:
 
 ``` bash
 quickprox add 3000 10.0.0.136 8080
