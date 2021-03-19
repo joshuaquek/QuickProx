@@ -18,7 +18,7 @@ switch (userOption) {
   case 'new': // alternate alias
   case 'serve': // alternate alias
   case 'deploy': // alternate alias
-    run('pm2 start ' + serverRoot + '/main/index.js -f --namespace quickprox --name tcp-proxy-localhost-' + (process.argv[3] || '0000') + '-to-' + (process.argv[4] || '0000') + '-' + (process.argv[5] || '0000') + ' -- ' + (process.argv[3] || '0000') + ' ' + (process.argv[4] || '0000') + ' ' + (process.argv[5] || '0000'))
+    run('pm2 start ' + serverRoot + '/main/index.js -f --namespace quickprox --name tcp-proxy-0.0.0.0-' + (process.argv[3] || '0000') + '-to-' + (process.argv[4] || '0000') + '-' + (process.argv[5] || '0000') + ' -- ' + (process.argv[3] || '0000') + ' ' + (process.argv[4] || '0000') + ' ' + (process.argv[5] || '0000'))
     break
   case 'delete':
   case 'remove': // alternate alias
